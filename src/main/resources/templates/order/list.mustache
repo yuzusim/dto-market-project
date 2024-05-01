@@ -1,0 +1,73 @@
+{{> layout/header}}
+
+<div class="container w14 sub-page" style="text-align: center">
+    <div class="main_title mb-100 fw-600">
+        <h2>내 구매 목록</h2>
+    </div>
+
+    <div class="row">
+        <!--주문 테이블-->
+        <div>
+            <table class="table order-table ft-18" style="vertical-align: middle">
+                <tr class="bar">
+                    <th>번호</th>
+                    <th>상품명</th>
+                    <th>상품가격</th>
+                    <th>구매수량</th>
+                    <th>결제방법</th>
+                    <th>주문상태</th>
+                </tr>
+                {{#orderList}}
+                    <tr>
+                    <tr>
+                        <td>{{id}}</td>
+                        <td>{{product.name}}</td> <!-- 수정: productId로부터 상품명을 가져옴 -->
+                        <td>
+                            <div style="width:150px; margin:0 auto;">
+                                <img src="/upload/{{product.img}}" alt="Product Image" style="max-width: 100%; max-height: 100%;">
+                            </div>
+                            {{product.price}}
+                        </td> <!-- 수정: productId로부터 상품가격을 가져옴 -->
+
+                        <td>
+                            {{product.id}}
+                        </td>
+                    <td></td>
+                    <td></td>
+                        <!--                        <td>-->
+                        <!--                            payment-->
+                        <!--                        </td>-->
+                        <!--                        <td>-->
+                        <!--                            <input type="hidden" name="status" value="status">-->
+                        <!--                            <a href="" class="btn btn-warning">status</a>-->
+                        <!--                        </td>-->
+                    </tr>
+                {{/orderList}}
+            </table>
+        </div>
+        <!--주문 테이블-->
+    </div>
+</div>
+
+<!--<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>-->
+<!--<script>-->
+<!--    $(document).ready(function () {-->
+<!--        // 수량 증가 버튼 클릭 이벤트-->
+<!--        $(".increase-btn").click(function () {-->
+<!--            var $quantityInput = $(this).siblings(".quantity");-->
+<!--            var currentQuantity = parseInt($quantityInput.val());-->
+<!--            $quantityInput.val(currentQuantity + 1);-->
+<!--        });-->
+
+<!--        // 수량 감소 버튼 클릭 이벤트-->
+<!--        $(".decrease-btn").click(function () {-->
+<!--            var $quantityInput = $(this).siblings(".quantity");-->
+<!--            var currentQuantity = parseInt($quantityInput.val());-->
+<!--            if (currentQuantity > 1) {-->
+<!--                $quantityInput.val(currentQuantity - 1);-->
+<!--            }-->
+<!--        });-->
+<!--    });-->
+<!--</script>-->
+
+{{> layout/footer}}

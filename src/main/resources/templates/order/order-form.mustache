@@ -1,0 +1,87 @@
+{{> layout/header}}
+<div class="container w14 sub-page" style="text-align: center">
+
+    <!--    <form action="/order/add" method="post" enctype="multipart/form-data">-->
+
+    <!--장바구니 시작-->
+    <div class="main_title mb-100 fw-600">
+        <h2>장바구니</h2>
+    </div>
+    <div class="cart-w d-flex">
+
+        <!--장바구니 테이블-->
+        <div class="cart-L">
+            <table class="table cart-table ft-18" style="vertical-align: middle">
+                <tr class="bar">
+                    <th>번호</th>
+                    <th>상품명</th>
+                    <th>구매수량</th>
+                    <th>상품가격</th>
+                    <th>선택하기</th>
+                </tr>
+                {{#orderSaveList}}
+                    <input type="hidden" name="productId" value="{{id}}">
+                    <tr>
+                        <td>{{id}}</td>
+                        <td>
+                            <div style="width:150px; margin:0 auto;">
+                                <img src="/upload/{{product.img}}" alt="Product Image"
+                                     style="max-width: 100%; max-height: 100%;">
+                            </div>
+                            {{name}}
+                        </td>
+                        <td>
+                            <input type="hidden" name="orderId" value="{{id}}">
+                            {{id}}
+                        </td>
+                        <td>
+                            {{price}}
+                        </td>
+                        <td>
+                            <input type="checkbox" name="" value="" style="width:20px !important;">
+                        </td>
+
+                    </tr>
+                {{/orderSaveList}}
+
+            </table>
+        </div>
+        <!--장바구니 테이블-->
+
+        <!--배송 정보 및 주문 버튼-->
+        <div class="cart-R ml-10">
+            <div class="ft-18">
+                <h3>[ 주문자 정보 ]</h3>
+                <p>{{user.username}}</p>
+                <h3>[ 배송지 ]</h3>
+                <p>{{user.address}}</p>
+                <div class="mb-10">
+                    <a href="/order/list" class="btn btn-mint" style="width:300px">배송지 변경</a>
+                </div>
+            </div>
+
+            <!--
+             <form action="/order/add" method="post">-->
+            <!--                <button class="" type="submit" height="36" radius="3">-->
+            <!--                    <span class="">주문하기</span>-->
+            <!--                </button>-->
+            <!--            </form>-->
+
+            <!--주문, 삭제하기 버튼-->
+            <!--form 실어서 보내야 하나 아직 구현안해서 a 태크로 걸어놓음-->
+            <div class="">
+                <div class="mb-10">
+                    <a href="/order/list" class="btn btn-outline-mint" style="width:300px">주문하기</a>
+                </div>
+
+                <div class="mb">
+                    <a href="/order/detail" class="btn btn-outline-mint" style="width:300px">삭제하기</a>
+                </div>
+            </div>
+            <!--주문, 상세하기 버튼-->
+        </div>
+    </div>
+    <!--장바구니 끝-->
+</div>
+
+{{> layout/footer}}
