@@ -1,0 +1,44 @@
+<!-- 세션 유저 정보가 있는 경우 -->
+{{#sessionUser}}
+    <div class="search-wrap search-bg">
+        <div class="search-bg-opcity">
+            <form action="/" method="get" class="search-from d-flex" id="search">
+                <input class="form-control me-2" type="text" placeholder="Search" value="" name="keyword"
+                       required>
+                <button class="btn-m btn-mint form-control" style="width:100px; padding:10px !important;">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+{{/sessionUser}}
+<!-- 세션 유저 정보가 있는 경우 -->
+
+<!-- 세션 유저 정보가 없는 경우 -->
+{{^sessionUser}}
+    <div class="search-wrap search-bg">
+        <div class="search-bg-opcity">
+            <form action="/" method="get" class="search-from d-flex" id="search">
+                <input class="form-control me-2" type="text" placeholder="Search" value="" name="keyword"
+                       required>
+                <button class="btn-m btn-mint form-control" style="width:100px; padding:10px !important;">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+{{/sessionUser}}
+<!-- 세션 유저 정보가 없는 경우 -->
+<script>
+    $(document).ready(function() {
+        // 머스태치 템플릿 파일을 가져와서 처리
+        $.get("searchbar.mustache", function(template) {
+            // 세션 유저 정보를 담은 객체 (실제 데이터에 맞게 수정 필요)
+            var sessionUser = { /* 세션 유저 데이터 */ };
+            // 머스태치 템플릿을 세션 유저 데이터와 렌더링
+            var rendered = Mustache.render(template, { sessionUser: sessionUser });
+            // 검색 바를 페이지에 삽입
+            $("#searchBarContainer").html(rendered);
+        });
+    });
+</script>
